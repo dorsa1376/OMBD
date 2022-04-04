@@ -1,0 +1,145 @@
+! inlist_brown_dwarf
+
+
+&star_job
+      relax_mass = .true.
+      relax_initial_mass = .true.
+      new_mass = 0.06
+      lg_max_abs_mdot = -12
+
+      show_log_description_at_start = .false.
+
+      load_saved_model = .true.
+      saved_model_name = 'start.mod'
+
+      save_model_when_terminate = .true.
+      save_model_filename = 'final07.mod'
+
+      change_initial_net = .true.      
+      new_net_name = 'pp_extras.net'
+
+      eos_file_prefix = 'mesa'
+      kappa_file_prefix = 'gs98'
+      
+      change_lnPgas_flag = .true.
+      new_lnPgas_flag = .true.
+      
+      change_v_flag = .true. ! needed for good rel_run_E_err
+      new_v_flag = .true.
+
+      set_initial_cumulative_energy_error = .true.
+      new_cumulative_energy_error = 0d0
+
+      pgstar_flag = .true.
+
+/ ! end of star_job namelist
+
+&controls
+
+      use_gold_tolerances = .false.
+
+      use_dedt_form_of_energy_eqn = .true.
+
+      num_trace_history_values = 2
+      trace_history_value_name(1) = 'rel_E_err'
+      trace_history_value_name(2) = 'log_rel_run_E_err'
+
+      ! check for retries and backups as part of test_suite
+      max_number_backups = 0
+      max_number_retries = -1
+      max_model_number = -1
+
+      initial_mass = 0.05
+      initial_z = 0.02d0
+      
+      mesh_delta_coeff = 0.5
+      
+      mixing_length_alpha = 1.89d0
+      MLT_option = 'Henyey'
+
+      atm_option = 'table'
+      atm_table = 'tau_100'
+
+     !max_timestep_factor = 1.01d0
+      max_age = 1d11
+      max_years_for_timestep = 1d9
+      backup_hold = 100
+      
+      varcontrol_target = 1d-5
+
+      photo_interval = 50
+      profile_interval = 50
+      history_interval = 1
+      terminal_interval = 10
+      write_header_frequency = 10
+      
+
+      !photo_interval = 10
+      !profile_interval = 10
+      !history_interval = 1
+      !terminal_interval = 1
+
+! FOR DEBUGGING
+
+      !report_hydro_solver_progress = .true. ! set true to see info about newton iterations
+      !report_ierr = .true. ! if true, produce terminal output when have some internal error
+      !hydro_show_correction_info = .true.
+
+      ! hydro debugging
+      !hydro_check_everything = .true.
+      !hydro_inspectB_flag = .true.
+      !hydro_sizequ_flag = .true.
+      
+      !hydro_get_a_numerical_partial = 1d-4
+      !hydro_test_partials_k = 1
+      !hydro_numerical_jacobian = .true.
+      !hydro_save_numjac_plot_data = .true.
+      !hydro_dump_call_number = 195
+      !hydro_dump_iter_number = 5
+      !hydro_epsder_struct = 1d-6
+      !hydro_epsder_chem = 1d-6
+      !hydro_save_photo = .true. ! Saves a photo when hydro_call_number = hydro_dump_call_number -1
+
+      !fill_arrays_with_NaNs = .true.
+      !stop_for_NaNs = .true.
+      
+      !max_years_for_timestep = 3.67628942044319d-05
+
+      !report_why_dt_limits = .true.
+      !report_all_dt_limits = .true.
+      !report_hydro_dt_info = .true.
+      
+      !show_mesh_changes = .true.
+      !mesh_dump_call_number = 5189
+      !okay_to_remesh = .false.
+      
+      !trace_evolve = .true.
+
+      !trace_newton_bcyclic_solve_input = .true. ! input is "B" j k iter B(j,k)
+      !trace_newton_bcyclic_solve_output = .true. ! output is "X" j k iter X(j,k)
+
+      !trace_newton_bcyclic_matrix_input = .true.
+      !trace_newton_bcyclic_matrix_output = .true.
+      
+      !trace_newton_bcyclic_steplo = 1 ! 1st model number to trace
+      !trace_newton_bcyclic_stephi = 1 ! last model number to trace
+      
+      !trace_newton_bcyclic_iterlo = 2 ! 1st newton iter to trace
+      !trace_newton_bcyclic_iterhi = 2 ! last newton iter to trace
+      
+      !trace_newton_bcyclic_nzlo = 1 ! 1st cell to trace
+      !trace_newton_bcyclic_nzhi = 10000 ! last cell to trace; if < 0, then use nz as nzhi
+      
+      !trace_newton_bcyclic_jlo = 1 ! 1st var to trace
+      !trace_newton_bcyclic_jhi = 100 ! last var to trace; if < 0, then use nvar as jhi
+      
+      !trace_k = 0
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+/ ! end of pgstar namelist
+
+

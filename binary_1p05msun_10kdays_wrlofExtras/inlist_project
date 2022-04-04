@@ -1,0 +1,32 @@
+&binary_job
+
+   inlist_names(1) = 'inlist_donor' 
+   inlist_names(2) = 'inlist_accretor'
+
+   evolve_both_stars = .true.
+
+/ ! end of binary_job namelist
+
+&binary_controls
+         
+   use_other_binary_wind_transfer = .true.
+
+   m1 = 1.05d0  ! donor mass in Msun
+   m2 = 0.069d0 ! companion mass in Msun
+   initial_period_in_days = 10000d0
+
+   !transfer efficiency controls
+   limit_retention_by_mdot_edd = .false.
+
+   max_tries_to_achieve = 200
+
+   do_jdot_mb = .false   
+   do_wind_mass_transfer_1 = .true.
+   do_wind_mass_transfer_2 = .false.   
+   
+   terminate_if_initial_overflow = .false.
+
+
+         
+   / ! end of binary_controls namelist
+

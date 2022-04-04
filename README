@@ -1,1 +1,3 @@
-Hello I am Dorsa
+This repository contains MESA inlists for the runs presented in Majidi, Forbes, and Loeb (2022).
+These include individual brown dwarf runs that we used to create Figure 1. These were run with mesa-r12778.
+We also include the brown dwarf-AGB binary run that produced the data for Figures 4 and 5. This was run with mesa-r15140.
